@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Backend | {{ SITE.name }}{% endblock %}{% block content %}
+<section class="wrap page"><p class="eyebrow">Backend</p><h1 class="split">Backend systems</h1>
+<div class="grid3">{% for p in items %}{% include "card.html" with p=p %}{% empty %}<div class="glass empty">No backend projects yet.</div>{% endfor %}</div></section>
+<div id="pdfmodal" hidden><button aria-label="Close">×</button><iframe title="PDF"></iframe></div>
+{% endblock %}

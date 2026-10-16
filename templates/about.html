@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block title %}About | {{ SITE.name }}{% endblock %}{% block content %}
+<section class="wrap page"><p class="eyebrow">About</p><h1 class="split">I build software that replaces manual work.</h1>
+<p class="lead">Hi, I'm {{ SITE.name }} from {{ SITE.location }}. I design the database, write the business logic and ship clean interfaces. Replace this paragraph with your own story.</p></section>
+<section class="wrap"><h2 class="split">Skills</h2><div class="skills">
+
+<div class="skill"><span>Python / Django</span><div class="meter"><i data-w="90"></i></div></div>
+<div class="skill"><span>Databases (MySQL, PostgreSQL)</span><div class="meter"><i data-w="80"></i></div></div>
+<div class="skill"><span>REST APIs</span><div class="meter"><i data-w="80"></i></div></div>
+<div class="skill"><span>HTML / CSS / JavaScript</span><div class="meter"><i data-w="75"></i></div></div></div></section>
+<section class="wrap"><h2 class="split">Timeline</h2><ol class="timeline">
+<li class="glass"><b>2025 – Now</b><p>Role / company. Add what you built.</p></li>
+<li class="glass"><b>2023 – 2025</b><p>Education or internship. Add details.</p></li></ol></section>
+<section class="wrap"><h2 class="split">Numbers</h2><div class="grid3">
+<div class="glass"><b class="count" data-n="10">0</b><p>Projects built</p></div>
+<div class="glass"><b class="count" data-n="3">0</b><p>Years learning</p></div>
+<div class="glass"><b class="count" data-n="100">0</b><p>% commitment</p></div></div></section>
+{% endblock %}

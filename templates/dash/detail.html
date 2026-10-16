@@ -1,0 +1,8 @@
+{% extends "dash/base.html" %}{% block content %}
+<a class="mut" href="{% url 'dash_inbox' kind %}">← Back</a>
+<div class="top"><h1>{% if kind == 'briefs' %}{{ o.full_name }}{% else %}{{ o.name }}{% endif %}</h1><a class="btn" href="mailto:{{ o.email }}">Reply by email</a></div>
+<div class="cols"><div class="card"><dl>{% for k,v in fields %}<dt>{{ k }}</dt><dd>{{ v|linebreaksbr }}</dd>{% endfor %}</dl>
+{% if files %}<h2>Files</h2>{% for f in files %}<a class="pill" href="{{ f.file.url }}" target="_blank">📎 {{ f.file.name|cut:"briefs/" }}</a>{% endfor %}{% endif %}</div>
+<div class="card"><h2>Status</h2><form method="post">{% csrf_token %}<select name="status">{% for v,l in status %}<option value="{{ v }}" {% if o.status == v %}selected{% endif %}>{{ l }}</option>{% endfor %}</select><button class="btn">Update</button></form>
+<form method="post" onsubmit="return confirm('Delete permanently?')">{% csrf_token %}<button name="delete" class="btn danger">Delete</button></form></div></div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% load static %}<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Dashboard · {{ SITE.name }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/dash.css' %}"></head><body>
+<aside><a class="brand" href="{% url 'dash' %}">{{ SITE.name }}<b>.</b><small>Dashboard</small></a>
+<nav>
+<a href="{% url 'dash' %}" class="{% if page == 'home' %}on{% endif %}">Overview</a>
+<a href="{% url 'dash_inbox' 'briefs' %}" class="{% if page == 'briefs' %}on{% endif %}">Project briefs{% if new_briefs %}<em>{{ new_briefs }}</em>{% endif %}</a>
+<a href="{% url 'dash_inbox' 'messages' %}" class="{% if page == 'messages' %}on{% endif %}">Messages{% if new_msgs %}<em>{{ new_msgs }}</em>{% endif %}</a>
+<a href="{% url 'dash_proj' 'websites' %}" class="{% if page == 'pwebsites' %}on{% endif %}">Websites</a>
+<a href="{% url 'dash_proj' 'backend' %}" class="{% if page == 'pbackend' %}on{% endif %}">Backend projects</a>
+</nav><div class="side-foot"><a href="{% url 'home' %}" target="_blank">View site ↗</a><a href="{% url 'dash_logout' %}">Log out</a></div></aside>
+<main>{% block content %}{% endblock %}</main></body></html>

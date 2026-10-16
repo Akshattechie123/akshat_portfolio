@@ -1,0 +1,43 @@
+{% extends "base.html" %}{% block title %}Start a project | {{ SITE.name }}{% endblock %}{% block content %}
+<section class="wrap page"><p class="eyebrow">Project intake</p><h1 class="split">Start a project</h1>
+<p class="lead">Turn your idea into a clear project blueprint. Takes about 3 minutes.</p>
+<div class="glass">
+<div class="progress"><i></i></div>
+<form data-ajax data-steps action="{% url 'brief_submit' %}" enctype="multipart/form-data" novalidate>{% csrf_token %}
+<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<fieldset class="step on"><legend>Tell me about you</legend>
+<label>Full name *<input name="full_name" required></label><label>Email address *<input type="email" name="email" required></label>
+<label>Phone (optional)<input name="phone"></label><label>Company (optional)<input name="company"></label></fieldset>
+<fieldset class="step"><legend>Your idea</legend>
+<label>Project title<input name="title"></label>
+<div class="pick">
+<label><input type="radio" name="project_type" value="Website"><span>Website</span></label>
+<label><input type="radio" name="project_type" value="Management System"><span>Management System</span></label>
+<label><input type="radio" name="project_type" value="Dashboard"><span>Dashboard</span></label>
+<label><input type="radio" name="project_type" value="API / Backend"><span>API / Backend</span></label>
+<label><input type="radio" name="project_type" value="E-commerce"><span>E-commerce</span></label>
+<label><input type="radio" name="project_type" value="Other"><span>Other</span></label></div>
+<label>What problem should it solve?<textarea name="goal" rows="4"></textarea></label></fieldset>
+<fieldset class="step"><legend>Requirements</legend>
+<label>Who will use it?<input name="target_users" placeholder="Admins, staff, customers..."></label>
+<div class="pick">
+<label><input type="checkbox" name="feature_chips" value="Login & roles"><span>Login & roles</span></label>
+<label><input type="checkbox" name="feature_chips" value="Admin dashboard"><span>Admin dashboard</span></label>
+<label><input type="checkbox" name="feature_chips" value="Payments"><span>Payments</span></label>
+<label><input type="checkbox" name="feature_chips" value="Email notifications"><span>Email notifications</span></label>
+<label><input type="checkbox" name="feature_chips" value="Reports / export"><span>Reports / export</span></label>
+<label><input type="checkbox" name="feature_chips" value="API integration"><span>API integration</span></label></div>
+<label>Other features<textarea name="features" rows="3"></textarea></label>
+<label>Reference links or products you like<textarea name="reference_links" rows="2"></textarea></label></fieldset>
+<fieldset class="step"><legend>Scope</legend>
+<label>Budget range<select name="budget"><option value="">Select</option><option>Under ₹25,000</option><option>₹25,000 – ₹75,000</option><option>₹75,000 – ₹2,00,000</option><option>₹2,00,000+</option><option>Not sure yet</option></select></label>
+<label>Timeline<select name="timeline"><option value="">Select</option><option>Less than 2 weeks</option><option>1 month</option><option>2–3 months</option><option>Flexible</option></select></label>
+<label>Technical or business constraints<textarea name="constraints" rows="3"></textarea></label></fieldset>
+<fieldset class="step"><legend>Files and review</legend>
+<label>Attach references (PDF, images, docs · max 10MB each)<input type="file" name="files" multiple accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt,.xlsx"></label>
+<div class="summary glass"></div></fieldset>
+<p class="err" role="alert"></p>
+<div class="row"><button type="button" class="btn ghost back" hidden>← Back</button><button type="button" class="btn mag next">Next →</button><button class="btn mag send" hidden>Send brief</button></div>
+</form>
+<div class="done" hidden><h2>Project brief received</h2><p>Thanks! A confirmation email with your selections is on its way.</p><a class="btn mag" href="{% url 'home' %}">Back to home</a></div>
+</div></section>{% endblock %}

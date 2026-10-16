@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Websites | {{ SITE.name }}{% endblock %}{% block content %}
+<section class="wrap page"><p class="eyebrow">Websites</p><h1 class="split">Websites I've built</h1>
+<div class="filters"><button class="on" data-f="all">All</button>{% for c in items|dictsort:"category" %}{% ifchanged c.category %}{% if c.category %}<button data-f="{{ c.category }}">{{ c.category }}</button>{% endif %}{% endifchanged %}{% endfor %}</div>
+<div class="grid3">{% for p in items %}<div data-cat="{{ p.category }}">{% include "card.html" with p=p %}</div>{% empty %}<div class="glass empty">No websites yet. Add them from the dashboard.</div>{% endfor %}</div></section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load static %}<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Login · Dashboard</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/dash.css' %}"></head><body class="lg"><form method="post" class="card login">{% csrf_token %}
+<h1>{{ SITE.name }}<b>.</b></h1><p>Sign in to your dashboard</p>
+<label>Username<input name="u" autofocus required autocomplete="username"></label>
+<label>Password<input type="password" name="p" required autocomplete="current-password"></label>
+<p class="err">{{ err }}</p><button class="btn">Sign in</button></form></body></html>

@@ -1,0 +1,8 @@
+<article class="glass tilt card">
+  {% if p.image %}<img src="{{ p.image.url }}" alt="{{ p.title }}" loading="lazy">{% endif %}
+  <h3>{{ p.title }}</h3><p>{{ p.description|truncatechars:140 }}</p>
+  <div>{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+  <div class="row sm">{% if p.live_link %}<a href="{{ p.live_link }}" target="_blank" rel="noopener">Live</a>{% endif %}
+  {% if p.github_link %}<a href="{{ p.github_link }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+  {% if p.pdf %}<a href="{{ p.pdf.url }}" class="pdf" data-pdf="{{ p.pdf.url }}">Read write-up</a>{% endif %}</div>
+</article>

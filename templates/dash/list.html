@@ -1,0 +1,7 @@
+{% extends "dash/base.html" %}{% block content %}
+<div class="top"><h1>{% if kind == 'briefs' %}Project briefs{% else %}Messages{% endif %}</h1><a class="btn ghost" href="{% url 'dash_export' kind %}">Export CSV</a></div>
+<form class="bar" method="get"><input name="q" value="{{ q }}" placeholder="Search..."><select name="status" onchange="this.form.submit()"><option value="">All status</option>{% for v,l in status %}<option value="{{ v }}" {% if st == v %}selected{% endif %}>{{ l }}</option>{% endfor %}</select><button class="btn">Search</button></form>
+<div class="card tbl"><table><thead><tr>{% for h in heads %}<th>{{ h }}</th>{% endfor %}<th>Status</th><th>Date</th></tr></thead><tbody>
+{% for r in rows %}<tr onclick="location='{% url 'dash_detail' kind r.obj.pk %}'">{% for c in r.cells %}<td>{{ c|default:"–" }}</td>{% endfor %}<td><span class="badge {{ r.obj.status }}">{{ r.obj.get_status_display }}</span></td><td>{{ r.obj.created_at|date:"d M, H:i" }}</td></tr>
+{% empty %}<tr><td colspan="9" class="mut">Nothing here yet.</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

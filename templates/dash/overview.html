@@ -1,0 +1,7 @@
+{% extends "dash/base.html" %}{% block content %}
+<h1>Overview</h1>
+<div class="stats">{% for l,n in stats %}<div class="card"><span>{{ l }}</span><b>{{ n }}</b></div>{% endfor %}</div>
+<div class="card"><h2>Submissions · last 7 days</h2><div class="chart">{% for c in chart %}<div><i style="height:{{ c.h }}%"><u>{{ c.n }}</u></i><span>{{ c.d }}</span></div>{% endfor %}</div></div>
+<div class="cols"><div class="card"><h2>Latest briefs</h2>{% for o in briefs %}<a class="item" href="{% url 'dash_detail' 'briefs' o.pk %}"><span>{{ o.full_name }}<small>{{ o.title|default:o.project_type }}</small></span><span class="badge {{ o.status }}">{{ o.get_status_display }}</span></a>{% empty %}<p class="mut">No briefs yet.</p>{% endfor %}</div>
+<div class="card"><h2>Latest messages</h2>{% for o in msgs %}<a class="item" href="{% url 'dash_detail' 'messages' o.pk %}"><span>{{ o.name }}<small>{{ o.subject|default:o.message|truncatechars:40 }}</small></span><span class="badge {{ o.status }}">{{ o.get_status_display }}</span></a>{% empty %}<p class="mut">No messages yet.</p>{% endfor %}</div></div>
+{% endblock %}

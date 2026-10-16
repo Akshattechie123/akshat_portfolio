@@ -1,0 +1,6 @@
+{% extends "dash/base.html" %}{% block content %}
+<div class="top"><h1>{% if kind == 'websites' %}Websites{% else %}Backend projects{% endif %}</h1><a class="btn" href="{% url 'dash_proj_new' kind %}">+ Add new</a></div>
+<div class="card">{% for p in items %}<div class="item"><span>{{ p.title }}<small>{{ p.tech_tags }}</small></span><span><span class="badge {% if p.is_published %}reviewed{% else %}closed{% endif %}">{% if p.is_published %}Published{% else %}Draft{% endif %}</span>
+<a class="pill" href="{% url 'dash_proj_edit' kind p.pk %}">Edit</a>
+<form method="post" action="{% url 'dash_proj_del' kind p.pk %}" style="display:inline" onsubmit="return confirm('Delete this project?')">{% csrf_token %}<button class="pill red">Delete</button></form></span></div>
+{% empty %}<p class="mut">No projects yet. Click "Add new".</p>{% endfor %}</div>{% endblock %}

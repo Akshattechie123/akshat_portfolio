@@ -1,0 +1,40 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero">
+  <p class="eyebrow">Python · Django · Backend · Full Stack</p>
+  <h1 class="split">Building digital systems, not just websites.</h1>
+  <p class="lead">{{ SITE.title }} focused on Django, backend architecture, databases and real-world web applications.</p>
+  <div class="row"><a href="#work" class="btn mag">View my work</a><a href="{% url 'start' %}" class="btn ghost mag">Start a project</a></div>
+  <div class="social"><a href="{{ SITE.linkedin }}" target="_blank" rel="noopener">LinkedIn</a><a href="{{ SITE.github }}" target="_blank" rel="noopener">GitHub</a><a href="mailto:{{ SITE.email }}">Email</a></div>
+  <span class="scroll">Scroll</span>
+</section>
+
+<section class="wrap two">
+  <div><p class="eyebrow">About me</p><h2 class="split">I turn business ideas into working systems.</h2>
+  <p>I'm {{ SITE.name }}, a full stack developer in {{ SITE.location }}. I build management platforms with role-based dashboards, workflow automation and clean backend architecture.</p>
+  <div class="row"><a href="{% url 'about' %}" class="btn mag">More about me</a><a href="{% url 'contact' %}" class="btn ghost mag">Get in touch</a></div></div>
+  <div class="glass tilt photo">Add your photo: <code>static/img/profile.jpg</code></div>
+</section>
+
+<section class="wrap"><p class="eyebrow">Services</p><h2 class="split">What I do</h2>
+<div class="grid4">
+  <article class="glass tilt"><i>01</i><h3>Management systems</h3><p>HR, billing, booking and company operations in one place.</p><span class="tag">Django</span><span class="tag">MySQL</span></article>
+  <article class="glass tilt"><i>02</i><h3>Role-based dashboards</h3><p>Separate workspaces for admins, staff and customers.</p><span class="tag">Auth</span><span class="tag">Access control</span></article>
+  <article class="glass tilt"><i>03</i><h3>Backend and APIs</h3><p>Data models, business logic and API integration.</p><span class="tag">ORM</span><span class="tag">REST</span></article>
+  <article class="glass tilt"><i>04</i><h3>Responsive websites</h3><p>Fast customer-facing pages that work on every screen.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></article>
+</div></section>
+
+<section class="wrap" id="work"><p class="eyebrow">Selected work</p><h2 class="split">My work</h2>
+<h3>Websites</h3>
+<div class="grid3">{% for p in websites %}{% include "card.html" with p=p %}{% empty %}<div class="glass empty">No websites yet. Add them from the dashboard.</div>{% endfor %}</div>
+<a href="{% url 'websites' %}" class="btn ghost mag">All websites</a>
+<h3 style="margin-top:3rem">Backend systems</h3>
+<div class="grid3">{% for p in backends %}{% include "card.html" with p=p %}{% empty %}<div class="glass empty">No backend projects yet. Published projects will appear here.</div>{% endfor %}</div>
+<a href="{% url 'backend' %}" class="btn ghost mag">All backend projects</a></section>
+
+<section class="wrap"><h2 class="split">My tech stack</h2><p>Move your cursor. The spheres in the background follow it.</p>
+<div class="chips">
+<span class="tag big">Python</span><span class="tag big">Django</span><span class="tag big">MySQL</span><span class="tag big">PostgreSQL</span><span class="tag big">REST APIs</span><span class="tag big">JavaScript</span><span class="tag big">Git</span><span class="tag big">Render</span></div></section>
+
+<section class="wrap cta glass"><h2 class="split">Have a project in mind?</h2><p>Tell me what you're building, what you need, and what problem you want to solve.</p>
+<div class="row"><a href="{% url 'start' %}" class="btn mag">Start a project</a><a href="{% url 'contact' %}" class="btn ghost mag">Send a message</a></div></section>
+{% endblock %}
